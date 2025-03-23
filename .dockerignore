@@ -1,0 +1,43 @@
+# Sensitive environment variables
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Git and source control metadata
+.git
+.gitignore
+.gitattributes
+.gitmodules
+
+# Docker-related files
+Dockerfile
+docker-compose.*
+docker-compose*.yml
+
+# Local configuration files or secrets
+*.local
+*.log
+logs
+coverage
+.vscode
+.idea
+
+# Development dependencies or cache directories
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Testing and coverage
+coverage/
+test-results/
+
+# Build outputs, temp files, and Deno cache (local cache only)
+dist/
+tmp/
+temp/
+.cache/
+.deno/
+
+# Fly.io config
+fly.toml
