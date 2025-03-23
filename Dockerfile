@@ -9,7 +9,6 @@ RUN deno task build
 RUN deno compile --frozen --allow-net --allow-env --allow-read --output main main.ts
 
 FROM denoland/deno:alpine
-EXPOSE 8080
 USER deno
 WORKDIR /app
 
