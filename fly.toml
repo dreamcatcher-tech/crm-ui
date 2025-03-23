@@ -3,9 +3,6 @@ primary_region = 'syd'
 
 [build]
 
-[env]
-  PORT = 80
-
 [http_service]
   force_https = true
   auto_stop_machines = 'suspend'
