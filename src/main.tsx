@@ -4,7 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import { createSyncStore } from './store.ts'
 import { createWebArtifact } from '@artifact/context/web-client'
-
+//
 declare global {
   var artifact: Awaited<ReturnType<typeof createWebArtifact>> | undefined
 }

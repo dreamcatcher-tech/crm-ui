@@ -33,7 +33,6 @@ coverage/
 test-results/
 
 # Build outputs, temp files, and Deno cache (local cache only)
-dist/
 tmp/
 temp/
 .cache/
