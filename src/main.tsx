@@ -12,6 +12,8 @@ declare global {
 const url = import.meta.env.VITE_WEB_CLIENT_URL
 const identity = import.meta.env.VITE_DID
 
+
+
 let bearerToken = localStorage.getItem('bearerToken')
 if (!bearerToken) {
   bearerToken = prompt('Enter authorization token')
