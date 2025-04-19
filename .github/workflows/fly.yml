@@ -1,0 +1,27 @@
+name: Fly Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    name: Deploy app
+    runs-on: ubuntu-latest
+    concurrency: deploy-group
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: denoland/setup-deno@v2
+      - run: deno install
+      - run: deno task build
+        env:
+          VITE_WEB_CLIENT_URL: ${{ secrets.VITE_WEB_CLIENT_URL }}
+          VITE_DID: ${{ secrets.VITE_DID }}
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
