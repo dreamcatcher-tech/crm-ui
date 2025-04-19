@@ -10,12 +10,19 @@ export interface Customer {
   balance: number;
   nextCollection: string | null;
   lastCollection: string;
-  address: {
+  serviceAddress: {
     street: string;
     suburb: string;
     city: string;
     postcode: string;
   };
+  mailingAddress?: {
+    street: string;
+    suburb: string;
+    city: string;
+    postcode: string;
+  };
+  useServiceAddressForMail: boolean;
 }
 
 export type EventType = 'payment' | 'collection' | 'scheduled';

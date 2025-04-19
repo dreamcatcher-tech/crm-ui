@@ -40,11 +40,11 @@ export function generateCustomerEvents(customer: Customer): CustomerEvent[] {
   const events: CustomerEvent[] = [];
   let currentBalance = customer.balance;
   let collectionCount = 0;
-  
+
   // Generate past events (last 6 months of history)
   let currentDate = new Date(TODAY);
   currentDate.setMonth(currentDate.getMonth() - 6);
-  
+
   while (currentDate <= TODAY) {
     collectionCount++;
     // Collection event
@@ -59,14 +59,14 @@ export function generateCustomerEvents(customer: Customer): CustomerEvent[] {
       balance: currentBalance,
       serviceType: customer.product,
     });
-    
+
     // 80% chance of payment after 4 collections
     if (collectionCount % 4 === 0 && Math.random() < 0.8) {
       const paymentDate = new Date(currentDate);
       paymentDate.setDate(paymentDate.getDate() + Math.floor(Math.random() * 7));
       // Calculate total cost for 4 collections
       const totalCost = 4 * (customer.product === 'bin' ? 18 : 28);
-      
+
       if (paymentDate <= TODAY) {
         currentBalance += totalCost;
         events.push({
@@ -79,17 +79,17 @@ export function generateCustomerEvents(customer: Customer): CustomerEvent[] {
         });
       }
     }
-    
+
     // Move to next collection (2-3 weeks later)
     currentDate.setDate(currentDate.getDate() + 14 + Math.floor(Math.random() * 7));
   }
-  
+
   // Add future scheduled collections if customer is active
   if (customer.status === 'active' && customer.nextCollection) {
     const nextCollectionDate = new Date(customer.nextCollection);
     const projectedCost = customer.product === 'bin' ? -18 : -28;
     const projectedBalance = currentBalance + projectedCost;
-    
+
     events.push({
       id: crypto.randomUUID(),
       date: customer.nextCollection!,
@@ -100,7 +100,7 @@ export function generateCustomerEvents(customer: Customer): CustomerEvent[] {
       serviceType: customer.product,
     });
   }
-  
+
   // Sort events by date, most recent first
   return events.sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
 }
@@ -109,7 +109,7 @@ export function generateCustomerEvents(customer: Customer): CustomerEvent[] {
 export const MOCK_CUSTOMERS: Customer[] = Array.from({ length: 1000 }, (_, index) => {
   const names = ['Alice', 'Bob', 'Carol', 'David', 'Emma', 'Frank', 'Grace', 'Henry', 'Ivy', 'Jack'];
   const surnames = ['Johnson', 'Smith', 'Williams', 'Brown', 'Davis', 'Miller', 'Wilson', 'Moore', 'Taylor', 'Anderson'];
-  
+
   const generatePhone = () => {
     // 40% chance of landline, 60% chance of mobile
     if (Math.random() < 0.4) {
@@ -132,7 +132,7 @@ export const MOCK_CUSTOMERS: Customer[] = Array.from({ length: 1000 }, (_, index
     // Generate last collection date (past date)
     const lastCollectionDate = new Date(TODAY);
     lastCollectionDate.setDate(lastCollectionDate.getDate() - Math.floor(Math.random() * 14) - 1); // Random day in last 2 weeks
-    
+
     // Only generate next collection date for active customers
     let nextCollection = null;
     if (isActive) {
@@ -140,12 +140,12 @@ export const MOCK_CUSTOMERS: Customer[] = Array.from({ length: 1000 }, (_, index
       // Next collection should be 7-14 days after last collection and always in the future
       const daysToAdd = Math.floor(Math.random() * 7) + 7; // 7-14 days
       nextCollectionDate.setDate(nextCollectionDate.getDate() + daysToAdd);
-      
+
       // Ensure next collection is always after today
       if (nextCollectionDate <= TODAY) {
         nextCollectionDate.setDate(TODAY.getDate() + Math.floor(Math.random() * 7) + 1); // 1-7 days from today
       }
-      
+
       nextCollection = formatDate(nextCollectionDate);
     }
 
@@ -159,7 +159,7 @@ export const MOCK_CUSTOMERS: Customer[] = Array.from({ length: 1000 }, (_, index
   const isActive = Math.random() > 0.3;
   const dates = generateDates(isActive);
   const phone = generatePhone();
-  
+
   const emailDomains = [
     'gmail.com',
     'outlook.com',
@@ -171,23 +171,22 @@ export const MOCK_CUSTOMERS: Customer[] = Array.from({ length: 1000 }, (_, index
     'business.co.nz'
   ];
   const domain = emailDomains[Math.floor(Math.random() * emailDomains.length)];
-  
+
   // Generate address
   const streetNumber = Math.floor(Math.random() * 300) + 1;
   const streetName = STREET_NAMES[Math.floor(Math.random() * STREET_NAMES.length)];
   const streetType = STREET_TYPES[Math.floor(Math.random() * STREET_TYPES.length)];
   const suburb = HAMILTON_SUBURBS[Math.floor(Math.random() * HAMILTON_SUBURBS.length)];
   const useServiceAddressForMail = Math.random() > 0.3; // 70% chance of using service address for mail
-  
+
   const generateAddress = () => ({
-    street: `${Math.floor(Math.random() * 300) + 1} ${
-      STREET_NAMES[Math.floor(Math.random() * STREET_NAMES.length)]
-    } ${STREET_TYPES[Math.floor(Math.random() * STREET_TYPES.length)]}`,
+    street: `${Math.floor(Math.random() * 300) + 1} ${STREET_NAMES[Math.floor(Math.random() * STREET_NAMES.length)]
+      } ${STREET_TYPES[Math.floor(Math.random() * STREET_TYPES.length)]}`,
     suburb: HAMILTON_SUBURBS[Math.floor(Math.random() * HAMILTON_SUBURBS.length)],
     city: 'Hamilton',
     postcode: '32' + Math.floor(Math.random() * 100).toString().padStart(2, '0'),
   });
-  
+
   return {
     id: `${index + 1}`,
     code: String(Math.floor(index * (30000 / 1000))).padStart(5, '0'), // Spread codes evenly
@@ -199,11 +198,11 @@ export const MOCK_CUSTOMERS: Customer[] = Array.from({ length: 1000 }, (_, index
     frequency: (() => {
       if (Math.random() > 0.5) {
         // For bins
-        const frequencies = ['weekly', '2weekly', '4weekly', '8weekly'];
+        const frequencies = ['weekly', '2weekly', '4weekly', '8weekly'] as const;
         return frequencies[Math.floor(Math.random() * frequencies.length)];
       } else {
         // For bags
-        const frequencies = ['weekly', '2weekly', '4weekly'];
+        const frequencies = ['weekly', '2weekly', '4weekly'] as const;
         return frequencies[Math.floor(Math.random() * frequencies.length)];
       }
     })(),

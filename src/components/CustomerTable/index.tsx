@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect, useLayoutEffect } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import { Search, HelpCircle } from 'lucide-react';
-import type { Customer } from './types';
+import type { Customer } from '../../types';
 import { Row } from './Row';
 import { CustomerModal } from '../CustomerModal/CustomerModal';
 import { HelpModal } from './HelpModal';
@@ -18,7 +18,7 @@ export default function CustomerTable() {
   const [selectedCustomerId, setSelectedCustomerId] = useState<string | null>(null);
   const [showHelp, setShowHelp] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
-  const [customers, setCustomers] = useState(MOCK_CUSTOMERS);
+  const [customers, setCustomers] = useState<Customer[]>([]);
   const [listHeight, setListHeight] = useState(600);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -99,11 +99,11 @@ export default function CustomerTable() {
           return searchTerms.every(term => searchableText.includes(term));
         }
       )
-      .sort((a, b) => 
+      .sort((a: Customer, b: Customer) => 
         sortField && sortDirection
           ? (sortField === 'nextCollection' || sortField === 'lastCollection'
               ? (parseDate(a[sortField] || '').getTime() - parseDate(b[sortField] || '').getTime()) * (sortDirection === 'asc' ? 1 : -1)
-              : (a[sortField] < b[sortField]
+              : (String(a[sortField]) < String(b[sortField])
                   ? (sortDirection === 'asc' ? -1 : 1)
                   : (sortDirection === 'asc' ? 1 : -1)))
           : 0
@@ -113,12 +113,12 @@ export default function CustomerTable() {
   useHotkeys({
     showHelp,
     setShowHelp,
-    searchInputRef,
+    searchInputRef: searchInputRef as React.RefObject<HTMLInputElement>,
     selectedCustomerId,
     setSelectedCustomerId,
     filteredAndSortedCustomers,
     onShowDetails: handleShowDetails,
-    listRef,
+    listRef: listRef as React.RefObject<List>,
   });
   const handleRowClick = (customerId: string) => {
     setSelectedCustomerId(selectedCustomerId === customerId ? null : customerId);

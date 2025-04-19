@@ -1,0 +1,23 @@
+{
+  "imports": {
+    "@artifact/api": "jsr:@artifact/api@^0.0.11",
+    "@artifact/context": "jsr:@artifact/context@^0.0.14"
+  },
+  "fmt": {
+    "singleQuote": true,
+    "semiColons": false
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-sloppy-imports"]
+    }
+  },
+  "unstable": ["sloppy-imports"],
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "jsxImportSourceTypes": "@types/react"
+  },
+  "nodeModulesDir": "auto"
+}

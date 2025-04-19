@@ -11,21 +11,25 @@
     "concat": "concat"
   },
   "dependencies": {
-    "@artifact/context": "npm:@jsr/artifact__context@^0.0.4",
-    "lucide-react": "^0.488.0",
+    "@deno/vite-plugin": "^1.0.4",
+    "immutable": "^5.1.1",
+    "lucide-react": "^0.501.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-window": "^1.8.10"
+    "react-window": "^1.8.10",
+    "zod": "^3.24.3",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.24.0",
+    "@types/debug": "^4.1.12",
+    "@eslint/js": "^9.25.0",
     "@tailwindcss/postcss": "^4.1.4",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@types/react-window": "^1.8.8",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^4.4.0",
     "autoprefixer": "^10.4.18",
-    "eslint": "^9.24.0",
+    "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^16.0.0",
@@ -33,6 +37,6 @@
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.30.1",
-    "vite": "^6.2.6"
+    "vite": "^6.3.2"
   }
 }
