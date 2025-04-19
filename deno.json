@@ -18,6 +18,5 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "jsxImportSourceTypes": "@types/react"
-  },
-  "nodeModulesDir": "manual"
+  }
 }
