@@ -1,7 +1,7 @@
 {
   "imports": {
-    "@artifact/api": "jsr:@artifact/api@^0.0.11",
-    "@artifact/context": "jsr:@artifact/context@^0.0.14"
+    "@artifact/api": "jsr:@artifact/api@^0.0.13",
+    "@artifact/context": "jsr:@artifact/context@^0.0.16"
   },
   "fmt": {
     "singleQuote": true,
@@ -19,5 +19,5 @@
     "jsxImportSource": "react",
     "jsxImportSourceTypes": "@types/react"
   },
-  "nodeModulesDir": "auto"
+  "nodeModulesDir": "manual"
 }
