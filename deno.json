@@ -1,11 +1,12 @@
 {
   "imports": {
-    "@artifact/api": "jsr:@artifact/api@^0.0.13",
-    "@artifact/context": "jsr:@artifact/context@^0.0.16"
+    "@artifact/api": "jsr:@artifact/api@^0.0.17",
+    "@artifact/context": "jsr:@artifact/context@^0.0.23"
   },
   "fmt": {
     "singleQuote": true,
-    "semiColons": false
+    "semiColons": false,
+    "lineWidth": 80
   },
   "lint": {
     "rules": {
