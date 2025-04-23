@@ -30,6 +30,7 @@ export default defineConfig({
       'npm:/zustand@5.0.3/react': 'zustand/react',
       'npm:react@19.1.0/jsx-runtime': 'react/jsx-runtime',
       'npm:react@19.1.0': 'react',
+      'npm:p-limit@6.2.0': 'p-limit',
     },
   },
 })

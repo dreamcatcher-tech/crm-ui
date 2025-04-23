@@ -16,9 +16,10 @@ import { MOCK_CUSTOMERS } from '../../mockData'
 import { ROW_HEIGHT } from './constants'
 import { useHotkeys } from './useHotkeys'
 import { TableHeader } from './TableHeader'
-import { useDir } from '@artifact/context'
+import { useDir, useWatch } from '@artifact/context'
 export default function CustomerTable() {
-  const dir = useDir('Name', { shardRoot: 'Name' })
+  useWatch({ path: 'Name', blobs: true })
+  const dir = useDir('Name', { shardRoot: 'Name', watch: false })
   const customers = useMemo(() => {
     const array = dir?.tree.toArray() || []
     return array
@@ -92,33 +93,33 @@ export default function CustomerTable() {
     const searchTerms = searchTerm.toLowerCase().split(' ').filter(Boolean)
 
     return customers
-    // .filter(
-    //   (customer) => {
-    //     // If no search terms, show all customers
-    //     if (searchTerms.length === 0) return true;
+      .filter(
+        ([filename, customer]) => {
+          // If no search terms, show all customers
+          if (searchTerms.length === 0) return true
 
-    //     // Create searchable text from all relevant fields
-    //     const searchableText = (
-    //       customer.name.toLowerCase() + ' ' +
-    //       customer.email.toLowerCase() + ' ' +
-    //       customer.code + ' ' +
-    //       customer.serviceAddress.street.toLowerCase() + ' ' +
-    //       customer.serviceAddress.suburb.toLowerCase() + ' ' +
-    //       customer.serviceAddress.city.toLowerCase() + ' ' +
-    //       customer.serviceAddress.postcode + ' ' +
-    //       // Include mailing address if it exists and is different from service address
-    //       (!customer.useServiceAddressForMail && customer.mailingAddress
-    //         ? customer.mailingAddress.street.toLowerCase() + ' ' +
-    //           customer.mailingAddress.suburb.toLowerCase() + ' ' +
-    //           customer.mailingAddress.city.toLowerCase() + ' ' +
-    //           customer.mailingAddress.postcode
-    //         : '')
-    //     );
+          // // Create searchable text from all relevant fields
+          // const searchableText = (
+          //   customer.name.toLowerCase() + ' ' +
+          //   customer.email.toLowerCase() + ' ' +
+          //   customer.code + ' ' +
+          //   customer.serviceAddress.street.toLowerCase() + ' ' +
+          //   customer.serviceAddress.suburb.toLowerCase() + ' ' +
+          //   customer.serviceAddress.city.toLowerCase() + ' ' +
+          //   customer.serviceAddress.postcode + ' ' +
+          //   // Include mailing address if it exists and is different from service address
+          //   (!customer.useServiceAddressForMail && customer.mailingAddress
+          //     ? customer.mailingAddress.street.toLowerCase() + ' ' +
+          //       customer.mailingAddress.suburb.toLowerCase() + ' ' +
+          //       customer.mailingAddress.city.toLowerCase() + ' ' +
+          //       customer.mailingAddress.postcode
+          //     : '')
+          // );
 
-    //     // All search terms must match somewhere in the searchable text
-    //     return searchTerms.every(term => searchableText.includes(term));
-    //   }
-    // )
+          // All search terms must match somewhere in the searchable text
+          return searchTerms.every((term) => searchableText.includes(term))
+        },
+      )
     // .sort((a: Customer, b: Customer) =>
     //   sortField && sortDirection
     //     ? (sortField === 'nextCollection' || sortField === 'lastCollection'
@@ -128,7 +129,7 @@ export default function CustomerTable() {
     //             : (sortDirection === 'asc' ? 1 : -1)))
     //     : 0
     // );
-  }, [searchTerm, sortField, sortDirection])
+  }, [searchTerm, sortField, sortDirection, customers])
 
   useHotkeys({
     showHelp,

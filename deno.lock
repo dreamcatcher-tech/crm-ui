@@ -1,30 +1,30 @@
 {
   "version": "4",
   "specifiers": {
-    "jsr:@artifact/api@0.0.17": "0.0.17",
+    "jsr:@artifact/api@0.0.18": "0.0.18",
     "jsr:@artifact/api@0.0.7": "0.0.7",
-    "jsr:@artifact/api@^0.0.17": "0.0.17",
+    "jsr:@artifact/api@^0.0.18": "0.0.18",
     "jsr:@artifact/api@^0.0.7": "0.0.7",
     "jsr:@artifact/bench@0.0.13": "0.0.13",
     "jsr:@artifact/cli@0.0.3": "0.0.3",
     "jsr:@artifact/context@0.0.20": "0.0.20",
-    "jsr:@artifact/context@^0.0.26": "0.0.26",
+    "jsr:@artifact/context@^0.0.27": "0.0.27",
     "jsr:@artifact/context@^0.0.8": "0.0.8",
     "jsr:@artifact/git@0.0.17": "0.0.17",
     "jsr:@artifact/helpers@0.0.6": "0.0.6",
     "jsr:@artifact/isolation@0.0.16": "0.0.16",
     "jsr:@artifact/provider@0.0.16": "0.0.16",
-    "jsr:@artifact/schemas@0.0.13": "0.0.13",
+    "jsr:@artifact/schemas@0.0.14": "0.0.14",
     "jsr:@artifact/schemas@^0.0.3": "0.0.3",
     "jsr:@artifact/server@0.0.18": "0.0.18",
     "jsr:@artifact/test@0.0.15": "0.0.15",
     "jsr:@artifact/tigris@0.0.17": "0.0.17",
-    "jsr:@artifact/tip@0.0.17": "0.0.17",
+    "jsr:@artifact/tip@0.0.18": "0.0.18",
     "jsr:@artifact/tip@0.0.7": "0.0.7",
-    "jsr:@artifact/tools@0.0.18": "0.0.18",
+    "jsr:@artifact/tools@0.0.19": "0.0.19",
     "jsr:@artifact/tools@0.0.8": "0.0.8",
-    "jsr:@artifact/utils-browser@0.0.16": "0.0.16",
-    "jsr:@artifact/utils-server@0.0.13": "0.0.13",
+    "jsr:@artifact/utils-browser@0.0.17": "0.0.17",
+    "jsr:@artifact/utils-server@0.0.14": "0.0.14",
     "jsr:@b-fuze/deno-dom@*": "0.1.49",
     "jsr:@david/code-block-writer@^13.0.2": "13.0.3",
     "jsr:@deno/cache-dir@0.14": "0.14.0",
@@ -183,8 +183,8 @@
         "npm:zod@^3.24.3"
       ]
     },
-    "@artifact/api@0.0.17": {
-      "integrity": "71c859f2adc5ac122de5b7aa183a81eb7bb064fc52e6a6e8e42de559f5144dae",
+    "@artifact/api@0.0.18": {
+      "integrity": "156491d7512cf521182056e2438eb187102459b530d5178a21a2fdf87d4a9cb7",
       "dependencies": [
         "npm:serialize-error@12.0.0",
         "npm:zod@3.24.3"
@@ -230,13 +230,13 @@
         "npm:it-pushable@3.2.3"
       ]
     },
-    "@artifact/context@0.0.26": {
-      "integrity": "b593115c38a0e0979ceedfee493f7cebc0d011fa9b2505d1c8b6c192d9e9c1ac",
+    "@artifact/context@0.0.27": {
+      "integrity": "b64f09c7f23a6cffdb7171eb134510dd2bc3caf4f65d2144e249333570f653e7",
       "dependencies": [
-        "jsr:@artifact/api@0.0.17",
-        "jsr:@artifact/schemas@0.0.13",
-        "jsr:@artifact/tip@0.0.17",
-        "jsr:@artifact/tools@0.0.18",
+        "jsr:@artifact/api@0.0.18",
+        "jsr:@artifact/schemas@0.0.14",
+        "jsr:@artifact/tip@0.0.18",
+        "jsr:@artifact/tools@0.0.19",
         "jsr:@artifact/utils-browser",
         "jsr:@hono/hono@4.7.7",
         "jsr:@std/path@1.0.8",
@@ -245,6 +245,7 @@
         "npm:fast-deep-equal",
         "npm:immutable@5.1.1",
         "npm:it-pushable@3.2.3",
+        "npm:p-limit@6.2.0",
         "npm:react@19.1.0",
         "npm:zustand@5.0.3"
       ]
@@ -292,10 +293,10 @@
         "npm:zod@^3.24.3"
       ]
     },
-    "@artifact/schemas@0.0.13": {
-      "integrity": "959de870b263a2b6eebaf976f9e704646e1b4560ce9e58f5beea06fdcc739d00",
+    "@artifact/schemas@0.0.14": {
+      "integrity": "571cb65373427edea7042b9c6dc58034f12d6c485c63af5b4762efd9b927e02d",
       "dependencies": [
-        "jsr:@artifact/api@0.0.17",
+        "jsr:@artifact/api@0.0.18",
         "npm:zod@3.24.3"
       ]
     },
@@ -339,10 +340,10 @@
         "npm:fast-deep-equal"
       ]
     },
-    "@artifact/tip@0.0.17": {
-      "integrity": "dec91f3817e7d7b896e431019e97af70b1997e61772250574a128580856d9d82",
+    "@artifact/tip@0.0.18": {
+      "integrity": "3603be3a2336902285c32ce6f5f55d3eb460db0b0377892b63b2a2e85cc64a8e",
       "dependencies": [
-        "jsr:@artifact/api@0.0.17",
+        "jsr:@artifact/api@0.0.18",
         "jsr:@artifact/utils-server",
         "jsr:@noble/hashes@1.7.2",
         "jsr:@std/path@1.0.8",
@@ -360,23 +361,23 @@
         "npm:zod@^3.24.3"
       ]
     },
-    "@artifact/tools@0.0.18": {
-      "integrity": "ffbb4e77e12a4379b1001ae5ead9dc71e552e5f36ece41f425829b060dcbe03e",
+    "@artifact/tools@0.0.19": {
+      "integrity": "9a6b18783076db2b393560d8a58433462cff52df6cc71ab4e65a27b981a30c90",
       "dependencies": [
-        "jsr:@artifact/api@0.0.17",
+        "jsr:@artifact/api@0.0.18",
         "npm:debug@4.4.0",
         "npm:it-pushable@3.2.3",
         "npm:serialize-error@12.0.0",
         "npm:zod@3.24.3"
       ]
     },
-    "@artifact/utils-browser@0.0.16": {
-      "integrity": "d347599eea0c517d2001db6412a113cb2320daa66c8e7e0ad1fa9a2167e87483"
+    "@artifact/utils-browser@0.0.17": {
+      "integrity": "f4f369943da006f298a59fff67f43e5d956d19e17222d2a9d106eb9ae14f226b"
     },
-    "@artifact/utils-server@0.0.13": {
-      "integrity": "b9f286ec633877dfbc8efcfd168e220f63bee97c6b599f926662d3a5a27f942d",
+    "@artifact/utils-server@0.0.14": {
+      "integrity": "f8e11fea6caf08c770f6d066bda525557943b8cad6b771dfc1dbc8ce64ce52b5",
       "dependencies": [
-        "jsr:@artifact/api@0.0.17",
+        "jsr:@artifact/api@0.0.18",
         "jsr:@std/dotenv@0.225.3",
         "npm:@opentelemetry/api@1.9.0",
         "npm:zod@3.24.3"
@@ -2903,8 +2904,8 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@artifact/api@^0.0.17",
-      "jsr:@artifact/context@^0.0.26"
+      "jsr:@artifact/api@^0.0.18",
+      "jsr:@artifact/context@^0.0.27"
     ],
     "packageJson": {
       "dependencies": [
