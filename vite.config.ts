@@ -7,7 +7,9 @@ loadEnv('development', '.')
 
 const env = Deno.env.get('NODE_ENV')
 
-const devPlugin = env === 'development' ? barrel({ packages: ['lucide-react'] }) : undefined
+const devPlugin = env === 'development'
+  ? barrel({ packages: ['lucide-react'] })
+  : undefined
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,6 +27,7 @@ export default defineConfig({
       'npm:immutable@5.1.1': 'immutable',
       'npm:/zustand@5.0.3/vanilla': 'zustand/vanilla',
       'npm:/zustand@5.0.3/middleware': 'zustand/middleware',
+      'npm:/zustand@5.0.3/react': 'zustand/react',
       'npm:react@19.1.0/jsx-runtime': 'react/jsx-runtime',
       'npm:react@19.1.0': 'react',
     },

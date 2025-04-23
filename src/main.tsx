@@ -37,11 +37,6 @@ function Boot() {
         }
 
         a = a.checkout({ repo })
-        const branches = await a.repo.branches.ls()
-        for (const branch of branches) {
-          const b = await a.checkout({ branch: [branch] }).latest()
-          console.log(await b.files.read.ls())
-        }
         a = await a.checkout({ repo, branch: ['changes'] }).latest()
 
         if (cancelled) return
@@ -60,21 +55,6 @@ function Boot() {
       cancelled = true
     }
   }, [])
-
-  const store = useMemo(
-    () => (artifact ? createSyncStore(artifact) : undefined),
-    [artifact],
-  )
-
-  useEffect(() => {
-    if (!store) return
-    store.getState().watch({ path: 'Name' })
-    const unsub = store.subscribe((state) => {
-      console.log(state.readMeta('Name'))
-      // console.log(state.readDir('Name'))
-    })
-    return unsub
-  }, [store])
 
   if (error) {
     return <div>{String(error)}</div>

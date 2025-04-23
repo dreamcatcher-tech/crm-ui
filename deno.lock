@@ -8,8 +8,7 @@
     "jsr:@artifact/bench@0.0.13": "0.0.13",
     "jsr:@artifact/cli@0.0.3": "0.0.3",
     "jsr:@artifact/context@0.0.20": "0.0.20",
-    "jsr:@artifact/context@0.0.23": "0.0.23",
-    "jsr:@artifact/context@^0.0.23": "0.0.23",
+    "jsr:@artifact/context@^0.0.26": "0.0.26",
     "jsr:@artifact/context@^0.0.8": "0.0.8",
     "jsr:@artifact/git@0.0.17": "0.0.17",
     "jsr:@artifact/helpers@0.0.6": "0.0.6",
@@ -231,8 +230,8 @@
         "npm:it-pushable@3.2.3"
       ]
     },
-    "@artifact/context@0.0.23": {
-      "integrity": "21e676740be6f094b41c93cd33a11dc40980ad0cf9d400c3ab7a3953c22007bc",
+    "@artifact/context@0.0.26": {
+      "integrity": "b593115c38a0e0979ceedfee493f7cebc0d011fa9b2505d1c8b6c192d9e9c1ac",
       "dependencies": [
         "jsr:@artifact/api@0.0.17",
         "jsr:@artifact/schemas@0.0.13",
@@ -240,14 +239,13 @@
         "jsr:@artifact/tools@0.0.18",
         "jsr:@artifact/utils-browser",
         "jsr:@hono/hono@4.7.7",
+        "jsr:@std/path@1.0.8",
         "npm:@msgpack/msgpack@3.1.1",
-        "npm:@types/react@19.1.2",
         "npm:debug@4.4.0",
         "npm:fast-deep-equal",
         "npm:immutable@5.1.1",
         "npm:it-pushable@3.2.3",
         "npm:react@19.1.0",
-        "npm:zod@3.24.3",
         "npm:zustand@5.0.3"
       ]
     },
@@ -348,10 +346,8 @@
         "jsr:@artifact/utils-server",
         "jsr:@noble/hashes@1.7.2",
         "jsr:@std/path@1.0.8",
-        "npm:@opentelemetry/api@1.9.0",
         "npm:debug@4.4.0",
-        "npm:fast-deep-equal",
-        "npm:zod@3.24.3"
+        "npm:fast-deep-equal"
       ]
     },
     "@artifact/tools@0.0.8": {
@@ -2908,7 +2904,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@artifact/api@^0.0.17",
-      "jsr:@artifact/context@^0.0.23"
+      "jsr:@artifact/context@^0.0.26"
     ],
     "packageJson": {
       "dependencies": [
