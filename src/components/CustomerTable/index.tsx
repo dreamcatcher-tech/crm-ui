@@ -99,7 +99,7 @@ export default function CustomerTable() {
     }
   }, [])
 
-  const handleSort = (field: keyof Customer) => {
+  const handleSort = (field: string | number | symbol) => {
     if (field === sortField) {
       if (sortDirection === 'asc') {
         setSortDirection('desc')
@@ -108,7 +108,7 @@ export default function CustomerTable() {
         setSortDirection(null)
       }
     } else {
-      setSortField(field)
+      setSortField(field as keyof Customer)
       setSortDirection('asc')
     }
   }
