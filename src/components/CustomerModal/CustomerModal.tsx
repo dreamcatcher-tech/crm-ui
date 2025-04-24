@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { UserCheck, UserX, Container, ShoppingBag, Mail, Calendar, CreditCard, History, Phone, MapPin, Clock, PencilLine } from 'lucide-react';
 import { Modal } from '../Modal';
 import type { Customer } from '../../types';
@@ -19,6 +19,7 @@ export function CustomerModal({ customer, onClose, onUpdate }: CustomerModalProp
   const handleSave = (updatedCustomer: Customer) => {
     onUpdate?.(updatedCustomer);
   };
+  const customerEvents = useMemo(() => customer ? generateCustomerEvents(customer) : [], [customer]);
 
   return (
     <>
@@ -184,7 +185,7 @@ export function CustomerModal({ customer, onClose, onUpdate }: CustomerModalProp
           
           {/* Event Log */}
           <div className="flex-1 min-h-0 mt-6">
-            <EventLog events={customer ? generateCustomerEvents(customer) : []} />
+            <EventLog events={customerEvents} />
           </div>
         </div>)}
       </Modal>

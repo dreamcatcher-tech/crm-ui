@@ -59,10 +59,10 @@ export default function CustomerTable() {
 
   const [searchTerm, setSearchTerm] = useState('')
   const [sortField, setSortField] = useState<keyof Customer | null>(
-    'nextCollection',
+    'code',
   )
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
-    'desc',
+    'asc',
   )
   const [selectedCustomerId, setSelectedCustomerId] = useState<string | null>(
     null,

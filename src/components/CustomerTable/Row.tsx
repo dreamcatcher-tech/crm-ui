@@ -39,7 +39,6 @@ export function Row(
       >
         <button
           type='button'
-          onClick={handleCodeClick}
           className='w-24 px-6 py-1.5 my-0.5 ml-1.5 truncate font-mono text-indigo-600 hover:text-indigo-700 focus:outline-none focus:text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded transition-all duration-150 border border-indigo-200 flex items-center justify-center group'
         >
           <span>{customer.id}</span>
