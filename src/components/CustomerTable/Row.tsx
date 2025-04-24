@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Container, ShoppingBag, UserCheck, UserX } from 'lucide-react'
-import type { Customer } from './types'
+import type { Customer, PendingCustomer } from '../../types'
 import { useCustomerActions } from './useCustomerActions'
 import { type TreeEntry, useFile } from '@artifact/context'
 
@@ -8,7 +8,7 @@ interface RowProps {
   index: number
   style: React.CSSProperties
   data: {
-    items: [string, TreeEntry][]
+    items: (Customer | PendingCustomer)[]
     selectedId: string | null
     onRowClick: (id: string) => void
     onShowDetails: (customer: Customer) => void
@@ -26,7 +26,7 @@ export function Row(
   //   console.log(customer)
   // }, [customer])
   // if (!customer) return null
-  return <div style={style}>{items[index][0]}</div>
+  return <div style={style}>{items[index]?.id}</div>
   // const { handleCodeClick } = useCustomerActions({ customer, onShowDetails, onRowClick });
 
   // return (

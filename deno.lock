@@ -136,6 +136,7 @@
     "npm:expect-type@1.2.1": "1.2.1",
     "npm:exponential-backoff-generator@2.0.1": "2.0.1",
     "npm:fast-deep-equal@3.1.3": "3.1.3",
+    "npm:fast-deep-equal@^3.1.3": "3.1.3",
     "npm:global-jsdom@26.0.0": "26.0.0_jsdom@26.1.0",
     "npm:globals@16": "16.0.0",
     "npm:gpt-tokenizer@2.8.1": "2.8.1",
@@ -216,7 +217,7 @@
         "npm:@msgpack/msgpack@^3.1.1",
         "npm:debug@^4.4.0",
         "npm:exponential-backoff-generator",
-        "npm:fast-deep-equal",
+        "npm:fast-deep-equal@3.1.3",
         "npm:it-pushable@^3.2.3"
       ]
     },
@@ -226,7 +227,7 @@
         "jsr:@hono/hono@4.7.7",
         "npm:@msgpack/msgpack@3.1.1",
         "npm:debug@4.4.0",
-        "npm:fast-deep-equal",
+        "npm:fast-deep-equal@3.1.3",
         "npm:it-pushable@3.2.3"
       ]
     },
@@ -242,7 +243,7 @@
         "jsr:@std/path@1.0.8",
         "npm:@msgpack/msgpack@3.1.1",
         "npm:debug@4.4.0",
-        "npm:fast-deep-equal",
+        "npm:fast-deep-equal@3.1.3",
         "npm:immutable@5.1.1",
         "npm:it-pushable@3.2.3",
         "npm:p-limit@6.2.0",
@@ -254,7 +255,7 @@
       "integrity": "426f5dc36416801205f5dfd0ce7d92d56620fa10dabc762d05b5dd13600f3875",
       "dependencies": [
         "npm:debug@4.4.0",
-        "npm:fast-deep-equal",
+        "npm:fast-deep-equal@3.1.3",
         "npm:isomorphic-git",
         "npm:it-pushable@3.2.3"
       ]
@@ -281,7 +282,7 @@
         "jsr:@std/ulid",
         "npm:debug@4.4.0",
         "npm:diff3",
-        "npm:fast-deep-equal",
+        "npm:fast-deep-equal@3.1.3",
         "npm:isomorphic-git",
         "npm:it-pushable@3.2.3"
       ]
@@ -325,7 +326,7 @@
         "jsr:@noble/hashes@1.7.2",
         "jsr:@std/assert@1.0.12",
         "jsr:@std/streams@1.0.9",
-        "npm:fast-deep-equal",
+        "npm:fast-deep-equal@3.1.3",
         "npm:it-pushable@3.2.3",
         "npm:p-limit@6.2.0"
       ]
@@ -337,7 +338,7 @@
         "jsr:@artifact/helpers",
         "jsr:@noble/hashes@^1.7.0",
         "jsr:@std/path@^1.0.8",
-        "npm:fast-deep-equal"
+        "npm:fast-deep-equal@3.1.3"
       ]
     },
     "@artifact/tip@0.0.18": {
@@ -348,7 +349,7 @@
         "jsr:@noble/hashes@1.7.2",
         "jsr:@std/path@1.0.8",
         "npm:debug@4.4.0",
-        "npm:fast-deep-equal"
+        "npm:fast-deep-equal@3.1.3"
       ]
     },
     "@artifact/tools@0.0.8": {
@@ -460,7 +461,7 @@
         "jsr:@std/dotenv@~0.225.3",
         "npm:commander@^13.1.0",
         "npm:debug@^4.4.0",
-        "npm:fast-deep-equal",
+        "npm:fast-deep-equal@3.1.3",
         "npm:p-limit@^6.2.0",
         "npm:zod@^3.24.3"
       ]
@@ -2921,6 +2922,7 @@
         "npm:eslint-plugin-react-hooks@^5.1.0-rc.0",
         "npm:eslint-plugin-react-refresh@~0.4.20",
         "npm:eslint@^9.25.1",
+        "npm:fast-deep-equal@^3.1.3",
         "npm:globals@16",
         "npm:immutable@^5.1.1",
         "npm:lucide-react@0.503",
