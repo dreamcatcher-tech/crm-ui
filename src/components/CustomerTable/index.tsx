@@ -130,7 +130,7 @@ export default function CustomerTable() {
         if (!customer) return false
         if (!isCustomer(customer)) {
           return searchTerms.some((term) =>
-            term.includes(customer.id.toLowerCase())
+            customer.id.toLowerCase().includes(term)
           )
         }
 
