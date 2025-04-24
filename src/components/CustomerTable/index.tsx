@@ -43,7 +43,13 @@ export default function CustomerTable() {
     )
       .map(([, treeEntry]) => {
         const record = blobs?.get(treeEntry.oid)
-        if (!record) return { id: treeEntry.oid }
+        if (!record) {
+          let { path } = treeEntry
+          if (path.endsWith('.json')) {
+            path = path.slice(0, -'.json'.length)
+          }
+          return { id: path }
+        }
         return toCachedCustomer(record)
       })
 
