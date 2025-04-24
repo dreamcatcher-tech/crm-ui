@@ -33,4 +33,7 @@ export default defineConfig({
       'npm:p-limit@6.2.0': 'p-limit',
     },
   },
+  build: {
+    sourcemap: true,
+  },
 })
