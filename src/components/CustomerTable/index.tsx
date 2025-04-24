@@ -9,7 +9,7 @@ import React, {
 import { FixedSizeList as List } from 'react-window'
 import { HelpCircle, Search } from 'lucide-react'
 import type { Customer, PendingCustomer } from '../../types'
-import { toCustomer } from '../../types'
+import { isCustomer, toCustomer } from '../../types'
 import { Row } from './Row'
 import { CustomerModal } from '../CustomerModal/CustomerModal'
 import { HelpModal } from './HelpModal'
@@ -157,7 +157,7 @@ export default function CustomerTable() {
       .sort((a: Customer | PendingCustomer, b: Customer | PendingCustomer) => {
         const aIsCustomer = isCustomer(a)
         const bIsCustomer = isCustomer(b)
-        if (!aIsCustomer && !bIsCustomer) return 0
+        if (!aIsCustomer && !bIsCustomer) return a.id.localeCompare(b.id)
         if (!aIsCustomer) return sortDirection === 'asc' ? 1 : -1
         if (!bIsCustomer) return sortDirection === 'asc' ? -1 : 1
         return sortField && sortDirection
@@ -198,13 +198,9 @@ export default function CustomerTable() {
         <div className='flex justify-between items-center'>
           <div className='flex items-center space-x-4'>
             <h2 className='text-2xl font-bold text-gray-800'>Customers</h2>
-            <button
-              onClick={() => setShowHelp(true)}
-              className='p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100'
-              aria-label='Show keyboard shortcuts'
-            >
-              <HelpCircle className='w-5 h-5' />
-            </button>
+            <div className='items-center space-x-2'>
+              showing {filteredAndSortedCustomers.length} of {customers.length}
+            </div>
           </div>
           <div className='relative'>
             <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5' />
@@ -216,6 +212,13 @@ export default function CustomerTable() {
               ref={searchInputRef}
               className='pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent'
             />
+            <button
+              onClick={() => setShowHelp(true)}
+              className='p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100'
+              aria-label='Show keyboard shortcuts'
+            >
+              <HelpCircle className='w-5 h-5' />
+            </button>
           </div>
         </div>
 
@@ -266,10 +269,4 @@ function toCachedCustomer(record: Uint8Array): Customer {
     cachedCustomers.set(record, customer)
   }
   return customer
-}
-
-function isCustomer(
-  customer: Customer | PendingCustomer,
-): customer is Customer {
-  return 'code' in customer
 }

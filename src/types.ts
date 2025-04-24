@@ -106,3 +106,9 @@ export const toCustomer = (record: JsonRecord): Customer => {
 
   return customer;
 };
+
+export function isCustomer(
+  customer: Customer | PendingCustomer,
+): customer is Customer {
+  return 'code' in customer
+}
