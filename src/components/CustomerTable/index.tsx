@@ -46,7 +46,8 @@ export default function CustomerTable() {
         if (!record) {
           let { path } = treeEntry
           if (path.endsWith('.json')) {
-            path = path.slice(0, -'.json'.length)
+            const index = path.indexOf('_')
+            path = path.slice(index + 1, -'.json'.length)
           }
           return { id: path }
         }
