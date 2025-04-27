@@ -17,45 +17,25 @@ import { parseDate } from '../../utils'
 import { ROW_HEIGHT } from './constants'
 import { useHotkeys } from './useHotkeys'
 import { TableHeader } from './TableHeader'
-import { ArtifactContext, useDir, useWatch } from '@artifact/context'
-import type { OrderedMap } from 'immutable'
-
+import { ArtifactContext, useDir } from '@artifact/context'
+import { useStore } from 'zustand'
 export default function CustomerTable() {
-  const [blobs, setBlobs] = useState<OrderedMap<string, Uint8Array>>()
-  const syncer = useContext(ArtifactContext)
-  useEffect(() => {
-    if (!syncer) return
-    let lastBlobs: OrderedMap<string, Uint8Array> | undefined
-    return syncer.subscribe((s) => {
-      if (lastBlobs === s.blobs) return
-      lastBlobs = s.blobs
-      setBlobs(s.blobs)
-    })
-  }, [syncer])
-
-  useWatch({ path: 'Name', blobs: true })
-
-  const dirEntries = useDir('Name', { shardRoot: 'Name', watch: false })
+  const dirEntries = useDir('Name', 'Name')
+  const syncer = useContext(ArtifactContext)!
+  const objects = useStore(syncer, (s) => s.objects)
   const customers: (Customer | PendingCustomer)[] = useMemo(() => {
-    const array = dirEntries?.tree.toArray() || []
-    const customers = array.filter(
-      ([, treeEntry]) => treeEntry.type === 'blob',
-    )
-      .map(([, treeEntry]) => {
-        const record = blobs?.get(treeEntry.oid)
-        if (!record) {
-          let { path } = treeEntry
-          if (path.endsWith('.json')) {
-            const index = path.indexOf('_')
-            path = path.slice(index + 1, -'.json'.length)
-          }
-          return { id: path }
-        }
-        return toCachedCustomer(record)
-      })
+    if (!dirEntries) return []
+    const customers: Customer[] = []
+    dirEntries.forEach((meta) => {
+      if (meta.type !== 'blob') return
+      const env = objects.get(meta.oid)
+      if (!env) throw new Error('Expected object ' + meta.oid)
+      if (env.type !== 'blob') throw new Error('Expected blob ' + meta.oid)
+      customers.push(toCachedCustomer(env.payload))
+    })
 
     return customers
-  }, [dirEntries?.tree])
+  }, [dirEntries, objects])
 
   const [searchTerm, setSearchTerm] = useState('')
   const [sortField, setSortField] = useState<keyof Customer | null>(

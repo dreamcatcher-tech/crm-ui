@@ -5,6 +5,8 @@ import './index.css'
 import { createWebArtifact } from '@artifact/context/web-client'
 import { ArtifactProvider, createSyncStore } from '@artifact/context'
 import type { Artifact } from '@artifact/api'
+import Debug from 'debug'
+Debug.enable('artifact:context:*')
 
 declare global {
   var artifact: Awaited<ReturnType<typeof createWebArtifact>> | undefined
@@ -45,7 +47,9 @@ function Boot() {
       } catch (e) {
         if (cancelled) return
         console.error(e)
-        localStorage.removeItem('bearerToken')
+        if (e instanceof Error && e.message.includes('401')) {
+          localStorage.removeItem('bearerToken')
+        }
         setError(e)
       }
     }
