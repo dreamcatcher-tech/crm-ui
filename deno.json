@@ -1,7 +1,7 @@
 {
   "imports": {
     "@artifact/api": "jsr:@artifact/api@^0.0.20",
-    "@artifact/context": "jsr:@artifact/context@^0.0.34"
+    "@artifact/context": "jsr:@artifact/context@^0.0.35"
   },
   "fmt": {
     "singleQuote": true,

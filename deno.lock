@@ -8,7 +8,7 @@
     "jsr:@artifact/bench@0.0.13": "0.0.13",
     "jsr:@artifact/cli@0.0.3": "0.0.3",
     "jsr:@artifact/context@0.0.20": "0.0.20",
-    "jsr:@artifact/context@^0.0.34": "0.0.34",
+    "jsr:@artifact/context@^0.0.35": "0.0.35",
     "jsr:@artifact/context@^0.0.8": "0.0.8",
     "jsr:@artifact/git@0.0.17": "0.0.17",
     "jsr:@artifact/helpers@0.0.6": "0.0.6",
@@ -230,8 +230,8 @@
         "npm:it-pushable@3.2.3"
       ]
     },
-    "@artifact/context@0.0.34": {
-      "integrity": "05d2c72b61ab33a3c534bd021b04e371e3b99ba4fd2f7aa414f9dec01b36e03e",
+    "@artifact/context@0.0.35": {
+      "integrity": "3a0010f66b7a605fae24269877c8d5f0031e31b163a39ac6e30e12cb4ac82511",
       "dependencies": [
         "jsr:@artifact/api@0.0.20",
         "jsr:@artifact/schemas@0.0.16",
@@ -2894,7 +2894,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@artifact/api@^0.0.20",
-      "jsr:@artifact/context@^0.0.34"
+      "jsr:@artifact/context@^0.0.35"
     ],
     "packageJson": {
       "dependencies": [
